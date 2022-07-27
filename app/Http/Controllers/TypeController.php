@@ -75,7 +75,6 @@ class TypeController extends Controller
         return view('type.typeEdit',compact('type'));
         // return
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -99,8 +98,7 @@ class TypeController extends Controller
                 'type'=>$request->type
             ]);
         }
-        return redirect('type/typeDashboard');
-    }
+        return redirect('type/typeDashboard');  }
 
     /**
      * Remove the specified resource from storage.
@@ -111,6 +109,7 @@ class TypeController extends Controller
     public function destroy($id)
     {
         //
+
         $count=Image::select('type')->where('type',$id)->count();
         // return $count;
         if($count==0){
