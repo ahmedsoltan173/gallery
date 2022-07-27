@@ -13,7 +13,11 @@ class Gallery extends Model
     protected $fillable=['title','cover','tag','created_at','updated_at'];
     protected $hidden=['created_at','updated_at','deleted_at'];
 
+    // public function image(){
+    //     return $this->hasOne('App\Models\Image','gallery_id');//one to one relationship
+    // }
+
     public function image(){
-        return $this->hasOne('App\Models\Image','gallery_id');//one to one relationship
+        return $this->hasMany('App\Models\Image','gallery_id','id');
     }
 }

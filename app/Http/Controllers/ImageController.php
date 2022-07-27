@@ -125,27 +125,7 @@ $search= request('search');
      */
     public function update(Request $request, $id)
     {
-        //
-// Validator::make([]);
 
-        // single var check
-        // $validator = Validator::make(['data' => $value],
-        //     ['data' => 'string|min:1|max:10']
-        // );
-        // if ($validator->fails()) {
-        //     // your code
-        // }
-        $validator=$request->validate([
-            'tag'=>'required|max:255',
-            // 'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
-            // 'image2'=>'mimes:jpeg,png,jpg,gif,svg|max:255',
-            'title'=>'required|max:255',
-            'description'=>'required|max:255',
-            'date'=>'required|before_or_equal:today',
-        ]);
-// if ($validator->fails()) {
-//     // your code
-// }
 // return $validator;
         if($request->image2==null){
             $file_name=$request->old_image;
