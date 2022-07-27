@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\type;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +15,7 @@ class TypeController extends Controller
     public function index()
     {
         //
-        $types = type::select()->get();
+        $types = Type::select()->get();
         return view('type.typeDashboard',compact('types'));
     }
 
@@ -27,7 +27,7 @@ class TypeController extends Controller
     public function create()
     {
         //
-        $types = type::all();
+        $types = Type::all();
         return view('type.typeAdd',compact('types'));
     }
 
@@ -40,7 +40,7 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         //
-        type::create([
+        Type::create([
             'type'=>$request->type
         ]);
         return redirect('dashboardType')->with('success', 'Added Successfully');
@@ -67,9 +67,10 @@ class TypeController extends Controller
     public function edit($id)
     {
         //
-        $type = type::find($id);
-        $types = type::all();
-        return view('type/typeEdit',compact('types'));
+        $type = Type::find($id);
+        // $types = type::all();
+        // return $types;
+        return view('type.typeEdit',compact('type'));
     }
 
     /**
@@ -82,10 +83,10 @@ class TypeController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $type =type::find($id);
+        $type =Type::find($id);
         $type -> type = $request->input('type');
         $type -> save();
-        return redirect('type/typeDashboard');
+        return redirect('dashboardType');
     }
 
     /**
@@ -97,7 +98,7 @@ class TypeController extends Controller
     public function destroy($id)
     {
         //
-        $type = type::find($id);
+        $type = Type::find($id);
         $type -> delete();
         return redirect('dashboardType')->with('success', 'Deleted Successfully');
     }
