@@ -39,6 +39,7 @@
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item"><a class="btn btn-light" href="{{ route('dashboardImage') }}">Images</a></li>
                             <li class="nav-item"><a class="btn btn-light" href="{{ route('dashboardGallery') }}">Gallery</a></li>
+                            <li class="nav-item"><a class="btn btn-light" href="{{ route('dashboardType') }}">Type</a></li>
                         </ul>
                     @endif
                     <!-- Right Side Of Navbar -->
@@ -50,12 +51,12 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-{{--
-                            @if (Route::has('register'))
+
+                            <!-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif --}}
+                            @endif  -->
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

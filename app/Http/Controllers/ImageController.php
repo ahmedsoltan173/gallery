@@ -48,7 +48,7 @@ class ImageController extends Controller
 $search= request('search');
 // $search= $request->search;
 
-       $images=Image::select()->where('title','LIKE','%'.$search.'%')->orWhere('tag','LIKE','%'.$search.'%')->get();
+       $images=Image::select()->where('title','LIKE','%'.$search.'%')->orWhere('tag','LIKE','%'.$search.'%')->orWhere('type','LIKE','%'.$search.'%')->get();
        return view('image.imageDashboard',compact('images'));
 
 

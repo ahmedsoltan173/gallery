@@ -44,3 +44,13 @@ Route::post('updateGallery/{id}', [App\Http\Controllers\GalleryController::class
 Route::get('deleteGallery/{id}', [App\Http\Controllers\GalleryController::class, 'destroy'])->name('deleteGallery')->middleware('auth');
 
 Route::get('showGallery/{id}', [App\Http\Controllers\GalleryController::class, 'show'])->name('showGallery')->middleware('auth');
+
+//type
+
+Route::get('dashboardType', [App\Http\Controllers\TypeController::class, 'index'])->name('dashboardType')->middleware('auth');
+Route::get('createType', [App\Http\Controllers\TypeController::class, 'create'])->name('createType')->middleware('auth');
+// Route::get('SearchType', [App\Http\Controllers\ImageController::class, 'search'])->name('SearchType')->middleware('auth');
+Route::post('storeType', [App\Http\Controllers\TypeController::class, 'store'])->name('storeType')->middleware('auth');
+Route::get('editType/{id}', [App\Http\Controllers\TypeController::class, 'edit'])->name('editType')->middleware('auth');
+Route::post('updateType/{id}', [App\Http\Controllers\TypeController::class, 'update'])->name('update')->middleware('auth');
+Route::get('deleteType/{id}', [App\Http\Controllers\TypeController::class, 'destroy'])->name('deleteType')->middleware('auth');
