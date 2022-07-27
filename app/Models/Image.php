@@ -14,8 +14,11 @@ class Image extends Model
     protected $fillable=['title','image','gallery_id','tag','description','date','deleted_at','created_at','updated_at'];
     protected $hidden=['created_at','updated_at','deleted_at'];
 
-    public function gallery(){
-        return $this->belongsTo('App\Models\Gallery','gallery_id');//one to one relationship
+    // public function gallery(){
+    //     return $this->belongsTo('App\Models\Gallery','gallery_id');//one to one relationship
 
+    // }
+    public function gallery(){
+       return $this->belongsTo('App\Models\Gallery','gallery_id','id');
     }
 }

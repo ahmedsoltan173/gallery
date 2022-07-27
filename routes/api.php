@@ -21,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('api-image', [App\Http\Controllers\HomeController::class, 'image']);
 Route::post('api-image', 'App\Http\Controllers\HomeController@image');
 Route::post('api-gallery', 'App\Http\Controllers\HomeController@gallery');
+
+Route::get('image/{id}', 'App\Http\Controllers\ApiContrller@show');
+Route::get('api-sort', 'App\Http\Controllers\ApiContrller@sort');
+// Route::post('api-image', 'App\Http\Controllers\HomeController@image');
