@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ImageRequest;
 use App\Models\Gallery;
 use App\Models\Image;
+use App\Models\Type;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 
@@ -31,12 +32,15 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+
         $gallery=Gallery::select('id','title')->get();
-        if($gallery->count()==0){
+        $type=Type::select('id','type')->get();
+                if($gallery->count()==0){
             return redirect('/')->with('success', 'Please You Should Add Gallery First');
+        }if($type->count()==0){
+            return redirect('dashboardType')->with('success', 'Please You Should Add Type First');
         }
-        return view('image.imageAdd',compact('gallery'));
+        return view('image.imageAdd',compact('gallery','type'));
     }
 
 
@@ -80,6 +84,7 @@ $search= request('search');
             'title'=>$request->title,
             'image'=>$file_name,
             'gallery_id'=>$request->gallery_id,
+            'type'=>$request->type,
             'date'=>$request->date,
             'description'=>$request->description,
             'tag'=>$request->tag
@@ -111,9 +116,11 @@ $search= request('search');
 
         $image=Image::find($id);
         $g=Gallery::find($image->gallery_id);
+        $type=Type::find($image->type);
+        $t=Type::select('id','type')->get()->except($type->id);
         $gallery=Gallery::select('id','title')->get()->except($g->id);
         // return $gallery;
-        return view('image.ImageEdit',compact('image','gallery','g'));
+        return view('image.ImageEdit',compact('image','gallery','g','type','t'));
     }
 
     /**
@@ -143,6 +150,7 @@ $search= request('search');
             'title'=>$request->title,
             'image'=>$file_name,
             'gallery_id'=>$request->gallery_id,
+            'type'=>$request->type,
             'date'=>$request->date,
             'description'=>$request->description,
             'tag'=>$request->tag

@@ -41,6 +41,21 @@
                     </div>
 
                     <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Choose The Type</label>
+                      {{-- <input type="text" value="{{ $image->gallery_id }}" class="form-control" name="gallery_id" id="exampleInputEmail1" aria-describedby="emailHelp"> --}}
+                      <select name="type" required id=""class="form-control">
+
+                          <option value="{{$image->type}}">{{ $type->type }}</option>
+                        @foreach ($t as $t)
+                        <option value="{{ $t->id}}">{{ $t->type }}</option>
+                        @endforeach
+                     </select>
+                     @error('type')
+                     <div class="text-danger">{{$message}}</div>
+                     @enderror
+                    </div>
+
+                    <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Add Tag</label>
                       <input type="text" class="form-control"required name="tag" value="{{ $image->tag }}" id="exampleInputEmail1" aria-describedby="emailHelp">
                       @error('tag')

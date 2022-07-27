@@ -25,8 +25,9 @@
                     <th scope="col">Title</th>
                     <th scope="col">Cover</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Tag</th>
                     <th scope="col">Gallery</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Tag</th>
                     <th scope="col">description</th>
                     <th scope="col">Control</th>
                   </tr>
@@ -40,9 +41,23 @@
                         <td>{{ $image->date }}</td>
                         <td>
                             <?php
-                            $g=App\Models\Gallery::find($image->gallery_id);
-                                ?>
-                        {{ $g->title }}
+                            $im=$image->gallery_id;
+                            $gallery=App\Models\Gallery::select('title')->where('id',$im)->get();
+
+                            foreach ($gallery as $g) {}
+                            ?>
+                            {{ $g->title }}
+
+                        </td>
+                        <td>
+                            <?php
+                            $ty=$image->type;
+                            $type=App\Models\Type::select('type')->where('id',$ty)->get();
+
+                            foreach ($type as $t) {}
+                            ?>
+                            {{ $t->type}}
+
                         </td>
                         <td>{{ $image->tag }}</td>
                         <td>{{ $image->description }}</td>

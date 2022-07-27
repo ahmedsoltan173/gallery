@@ -11,7 +11,7 @@ class Image extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table='image';
-    protected $fillable=['title','image','gallery_id','tag','description','date','deleted_at','created_at','updated_at'];
+    protected $fillable=['title','image','type','gallery_id','tag','description','date','deleted_at','created_at','updated_at'];
     protected $hidden=['created_at','updated_at','deleted_at'];
 
     // public function gallery(){
