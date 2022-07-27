@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\Image;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ApiContrller extends Controller
@@ -69,7 +70,7 @@ class ApiContrller extends Controller
     }
     public function sort()
     {
-     return $type=Gallery::with('image')->select()->orderBy('title', 'ASC')->get();
+     return $type=Type::with('image')->select()->orderBy('type', 'ASC')->get();
     //   return $type->image;
 
         // $sort=$request->sort;

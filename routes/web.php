@@ -48,6 +48,7 @@ Route::get('showGallery/{id}', [App\Http\Controllers\GalleryController::class, '
 //type
 
 Route::get('dashboardType', [App\Http\Controllers\TypeController::class, 'index'])->name('dashboardType')->middleware('auth');
+Route::get('sortType', [App\Http\Controllers\TypeController::class, 'sort'])->name('sortType')->middleware('auth');
 Route::get('createType', [App\Http\Controllers\TypeController::class, 'create'])->name('createType')->middleware('auth');
 // Route::get('SearchType', [App\Http\Controllers\ImageController::class, 'search'])->name('SearchType')->middleware('auth');
 Route::post('storeType', [App\Http\Controllers\TypeController::class, 'store'])->name('storeType')->middleware('auth');

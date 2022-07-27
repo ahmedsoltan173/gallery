@@ -19,6 +19,6 @@ class Image extends Model
 
     // }
     public function gallery(){
-       return $this->belongsTo('App\Models\Gallery','gallery_id','id');
+       return $this->belongsTo('App\Models\Type','type','id');
     }
 }

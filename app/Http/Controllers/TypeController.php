@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TypeRequest;
 use App\Models\Image;
 use App\Models\Type;
+// use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Validation\Validator;
+// use \Validator;
 
 
 class TypeController extends Controller
@@ -21,6 +25,14 @@ class TypeController extends Controller
         $types = Type::select()->get();
         return view('type.typeDashboard',compact('types'));
     }
+    // public function sort()
+    // {
+    //     //
+    //     $images =Type::with('image')->select()->orderBy('type', 'ASC')->get();
+    //     // return $images;
+    //     // $images=Image::select()->get();
+    //     return view('image.sortImageDashboard',compact('images'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -84,6 +96,8 @@ class TypeController extends Controller
      */
     public function update(TypeRequest $request, $id)
     {
+
+        // FacadesValidator
         //
         $type =Type::find($id);
         // $type -> type = $request->input('type');
@@ -98,7 +112,10 @@ class TypeController extends Controller
                 'type'=>$request->type
             ]);
         }
-        return redirect('type/typeDashboard');  }
+        // return redirect('type/typeDashboard');
+        return redirect('dashboardType')->with('success', 'Updated Successfully');
+
+    }
 
     /**
      * Remove the specified resource from storage.

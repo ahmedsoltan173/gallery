@@ -10,4 +10,8 @@ class Type extends Model
     use HasFactory;
     protected $table='type';
     protected $fillable =['type'];
+
+    public function image(){
+        return $this->hasMany('App\Models\Image','type','id');
+    }
 }
