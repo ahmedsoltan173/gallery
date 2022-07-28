@@ -25,7 +25,7 @@ class TypeRequest extends FormRequest
     {
         return [
             //
-            'type'=>'required|max:255|unique:Type,type'
+            'type'=>'sometimes|required|max:255|sometimes|unique:Type,type'
         ];
     }
 }

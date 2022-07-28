@@ -29,7 +29,7 @@
                         <td>{{ $gallery->tag }}</td>
                         <td>
                             <a href="{{ route('editGallery',$gallery->id) }}" class="btn btn-success">Edit</a>
-                            <a href="{{ route('deleteGallery',$gallery->id) }}"onclick="return confirm('Are you sure? \n If you confirm You will remove all the image in this gallery ...')" class="btn btn-danger">Delete</a>
+                            <a href="{{ route('deleteGallery',$gallery->id) }}"onclick="return confirm('Are you sure? \n If you confirm you will remove all the image in this gallery ...')" class="btn btn-danger">Delete</a>
                             <a href="{{ route('showGallery',$gallery->id) }}" class="btn btn-primary">View</a>
 
                         </td>

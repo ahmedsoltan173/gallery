@@ -57,7 +57,7 @@ class GalleryController extends Controller
             'cover'=>$file_name,
             'tag'=>$request->tag
         ]);
-        return redirect('/')->with('success', 'Added Successfully');
+        return redirect('dashboardGallery')->with('success', 'Added Successfully');
     }
 
     /**
@@ -116,7 +116,7 @@ class GalleryController extends Controller
             'cover'=>$file_name,
             'tag'=>$request->tag
         ]);
-        return redirect('/')->with('success', 'Updated Successfully');
+        return redirect('dashboardGallery')->with('success', 'Updated Successfully');
 
     }
 
@@ -131,6 +131,6 @@ class GalleryController extends Controller
         //
         $gallery=Gallery::find($id)->delete();
         Image::select()->where('gallery_id',$id)->delete();
-        return redirect('/')->with('success', 'Deleted Successfully');
+        return redirect('dashboardGallery')->with('success', 'Deleted Successfully');
     }
 }

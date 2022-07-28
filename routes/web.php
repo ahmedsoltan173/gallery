@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 
 //image
@@ -35,7 +36,7 @@ Route::post('updateImage/{id}', [App\Http\Controllers\ImageController::class, 'u
 Route::get('deleteImage/{id}', [App\Http\Controllers\ImageController::class, 'destroy'])->name('deleteImage')->middleware('auth');
 
 //gallery
-Route::get('/', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboardGallery')->middleware('auth');
+Route::get('dashboardGallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboardGallery')->middleware('auth');
 // Route::get('dashboardGallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboardGallery')->middleware('auth');
 Route::get('createGallery', [App\Http\Controllers\GalleryController::class, 'create'])->name('createGallery')->middleware('auth');
 Route::post('storeGallery', [App\Http\Controllers\GalleryController::class, 'store'])->name('storeGallery')->middleware('auth');
