@@ -31,7 +31,7 @@
                     <tr>
                         <th scope="row">{{ $type->id }}</th>
                         <td>{{ $type->type }}</td>
-         
+
                         <td>
                             <a href="{{ route('editType',$type->id) }}" class="btn btn-success">Edit</a>
                             <a href="{{ route('deleteType',$type->id) }}"onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
@@ -46,6 +46,9 @@
                 </table>
                 <a href="{{ route('createType') }}" class="btn btn-primary ">Add New Type</a>
         </div>
+    </div>
+    <div class="d-felx justify-content-center">
+        {!! $types->links('pagination::bootstrap-5') !!}
     </div>
 </div>
 @endsection

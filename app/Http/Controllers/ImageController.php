@@ -20,7 +20,7 @@ class ImageController extends Controller
     {
 
         //
-        $images=Image::select()->get();
+        $images=Image::select()->paginate(PAGINATION_COUNTER);
         // $gallery=Gallery::find($images->)
         return view('image.imageDashboard',compact('images'));
     }

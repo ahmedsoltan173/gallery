@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('home', function () {
 //     return view('gallery.GalleryAdd');
 // });
+define('PAGINATION_COUNTER',5);
 
 Auth::routes();
 

@@ -18,8 +18,8 @@ class GalleryController extends Controller
     public function index()
     {
         //
-        $gallery=Gallery::select()->get();
-        return view('gallery.GalleryDashboard',compact('gallery'));
+        $gallerys=Gallery::select()->paginate(PAGINATION_COUNTER);
+        return view('gallery.GalleryDashboard',compact('gallerys'));
     }
 
     /**
@@ -70,7 +70,7 @@ class GalleryController extends Controller
     {
         //
         // // return $id;
-        $images=Image::select()->where('gallery_id',$id)->get();
+        $images=Image::select()->where('gallery_id',$id)->paginate(PAGINATION_COUNTER);
         return view('image.imageDashboard',compact('images'));
     }
 

@@ -21,7 +21,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($gallery as $gallery)
+                    @foreach ($gallerys as $gallery)
                     <tr>
                         <th scope="row">{{ $gallery->id }}</th>
                         <td>{{ $gallery->title }}</td>
@@ -37,9 +37,14 @@
                     @endforeach
                     </tbody>
                 </table>
+
                 <a href="{{ route('createGallery') }}" class="btn btn-primary ">Create New Gallery</a>
 
             </div>
     </div>
+    <div class="d-felx justify-content-center">
+        {!! $gallerys->links('pagination::bootstrap-5') !!}
+    </div>
 </div>
+
 @endsection
