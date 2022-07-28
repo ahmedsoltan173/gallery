@@ -32,27 +32,35 @@
                   </tr>
                 </thead>
                 <tbody class="table-light">
-                    @foreach ($gallery as $gallery)
+                    @foreach ($gallerys as $gallery)
                     <tr>
                         <th scope="row">{{ $gallery->id }}</th>
                         <td>{{ $gallery->title }}</td>
                         <td><img src="{{ asset('image/gallery/'.$gallery->cover) }}"width="50" height="50" alt=""></td>
                         <td>{{ $gallery->tag }}</td>
                         <td>
-                            <a href="{{ route('editGallery',$gallery->id) }}" class="btn btn-warning">Edit</a>
-                            <a href="{{ route('deleteGallery',$gallery->id) }}"onclick="return confirm('Are you sure? \n If you confirm You will remove all the image in this gallery ...')" class="btn btn-danger">Delete</a>
-                            <a href="{{ route('showGallery',$gallery->id) }}" class="btn btn-info">View</a>
+
+                            <a href="{{ route('editGallery',$gallery->id) }}" class="btn btn-success">Edit</a>
+                            <a href="{{ route('deleteGallery',$gallery->id) }}"onclick="return confirm('Are you sure? \n If you confirm you will remove all the image in this gallery ...')" class="btn btn-danger">Delete</a>
+                            <a href="{{ route('showGallery',$gallery->id) }}" class="btn btn-primary">View</a>
+
 
                         </td>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <a href="{{ route('createGallery') }}" class="btn btn-secondary ">Create New Gallery</a>
+
+                <a href="{{ route('createGallery') }}" class="btn btn-primary ">Create New Gallery</a>
+
 
             </div>
     </div>
+    <div class="d-felx justify-content-center">
+        {!! $gallerys->links('pagination::bootstrap-5') !!}
+    </div>
 </div>
+
 @endsection
 </body>
 </html>

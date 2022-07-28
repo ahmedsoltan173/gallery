@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class TypeRequest extends FormRequest
 {
@@ -25,7 +27,8 @@ class TypeRequest extends FormRequest
     {
         return [
             //
-            'type'=>'required|max:255|unique:Type,type'
+            'type'=>['required','Max:255',
+            Rule::unique('Type')->ignore($this->id)]
         ];
     }
 }

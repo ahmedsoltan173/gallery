@@ -18,8 +18,8 @@ class GalleryController extends Controller
     public function index()
     {
         //
-        $gallery=Gallery::select()->get();
-        return view('gallery.GalleryDashboard',compact('gallery'));
+        $gallerys=Gallery::select()->paginate(PAGINATION_COUNTER);
+        return view('gallery.GalleryDashboard',compact('gallerys'));
     }
 
     /**
@@ -57,7 +57,7 @@ class GalleryController extends Controller
             'cover'=>$file_name,
             'tag'=>$request->tag
         ]);
-        return redirect('/')->with('success', 'Added Successfully');
+        return redirect('dashboardGallery')->with('success', 'Added Successfully');
     }
 
     /**
@@ -70,7 +70,7 @@ class GalleryController extends Controller
     {
         //
         // // return $id;
-        $images=Image::select()->where('gallery_id',$id)->get();
+        $images=Image::select()->where('gallery_id',$id)->paginate(PAGINATION_COUNTER);
         return view('image.imageDashboard',compact('images'));
     }
 
@@ -116,7 +116,7 @@ class GalleryController extends Controller
             'cover'=>$file_name,
             'tag'=>$request->tag
         ]);
-        return redirect('/')->with('success', 'Updated Successfully');
+        return redirect('dashboardGallery')->with('success', 'Updated Successfully');
 
     }
 
@@ -131,6 +131,6 @@ class GalleryController extends Controller
         //
         $gallery=Gallery::find($id)->delete();
         Image::select()->where('gallery_id',$id)->delete();
-        return redirect('/')->with('success', 'Deleted Successfully');
+        return redirect('dashboardGallery')->with('success', 'Deleted Successfully');
     }
 }

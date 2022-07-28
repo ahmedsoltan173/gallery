@@ -17,13 +17,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('gallery.GalleryDashboard');
 // })->middleware('auth');
-// Route::get('home', function () {
-//     return view('gallery.GalleryAdd');
-// });
+Route::get('Regi', function () {
+    return view('auth.register');
+});
+define('PAGINATION_COUNTER',5);
 
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
+// Route::get('Regi', [App\Http\Controllers\ImageController::class, 'addAdmin'])->name('Regi')->middleware('auth');
 
 //image
 Route::get('dashboardImage', [App\Http\Controllers\ImageController::class, 'index'])->name('dashboardImage')->middleware('auth');
@@ -35,7 +38,7 @@ Route::post('updateImage/{id}', [App\Http\Controllers\ImageController::class, 'u
 Route::get('deleteImage/{id}', [App\Http\Controllers\ImageController::class, 'destroy'])->name('deleteImage')->middleware('auth');
 
 //gallery
-Route::get('/', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboardGallery')->middleware('auth');
+Route::get('dashboardGallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboardGallery')->middleware('auth');
 // Route::get('dashboardGallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboardGallery')->middleware('auth');
 Route::get('createGallery', [App\Http\Controllers\GalleryController::class, 'create'])->name('createGallery')->middleware('auth');
 Route::post('storeGallery', [App\Http\Controllers\GalleryController::class, 'store'])->name('storeGallery')->middleware('auth');

@@ -18,6 +18,11 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
+    public function index(){
+        $image=Image::select()->count();
+        $gallery=Gallery::select()->count();
+        return view('home',compact('image','gallery'));
+    }
     /**
      * Show the application dashboard.
      *

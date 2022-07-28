@@ -83,7 +83,11 @@
                 <a href="{{ route('createImage') }}" class="btn btn-secondary">Create New Image</a>
         </div>
     </div>
+    <div class="d-felx justify-content-center">
+        {!! $images->links('pagination::bootstrap-5') !!}
+    </div>
 </div>
+
 @endsection
 </body>
 </html>

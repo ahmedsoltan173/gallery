@@ -22,7 +22,7 @@ class TypeController extends Controller
     public function index()
     {
         //
-        $types = Type::select()->get();
+        $types = Type::select()->paginate(PAGINATION_COUNTER);
         return view('type.typeDashboard',compact('types'));
     }
     // public function sort()

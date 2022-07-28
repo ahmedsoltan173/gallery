@@ -20,7 +20,8 @@ class ImageController extends Controller
     {
 
         //
-        $images=Image::select()->get();
+        $images=Image::select()->paginate(PAGINATION_COUNTER);
+
         // $gallery=Gallery::find($images->)
         return view('image.imageDashboard',compact('images'));
     }
@@ -30,6 +31,9 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function create()
     {
 
@@ -130,7 +134,7 @@ $search= request('search');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ImageRequest $request, $id)
     {
 
 // return $validator;

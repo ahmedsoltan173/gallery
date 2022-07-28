@@ -22,7 +22,7 @@
                     @csrf
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">The Name Of Gallery</label>
-                      <input type="text" class="form-control"name="title"value='{{ $gallery->title }}'  id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input type="text" class="form-control" name="title" value='{{ $gallery->title }}'  id="exampleInputEmail1" aria-describedby="emailHelp">
                       @error('title')
                       <div class="text-danger">{{$message}}</div>
                       @enderror
