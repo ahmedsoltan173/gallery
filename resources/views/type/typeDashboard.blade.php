@@ -1,3 +1,10 @@
+<html>
+    <head>
+                <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+    </head>
+<body>
+
 @extends('layouts.app')
 
 @section('content')
@@ -15,25 +22,25 @@
             right: 25%;
             margin: -4px;" role="search" action="{{ route('SearchImage') }}" method="GET">
                 <input class="form-control me-2"name="search" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-dark" type="submit">Search</button>
               </form>
               <br><br>
             <table class="table">
-                <thead>
+                <thead class="table-primary">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Type</th>
                     <th scope="col">Control</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-light">
                     @forelse ($types as $type)
                     <tr>
                         <th scope="row">{{ $type->id }}</th>
                         <td>{{ $type->type }}</td>
          
                         <td>
-                            <a href="{{ route('editType',$type->id) }}" class="btn btn-success">Edit</a>
+                            <a href="{{ route('editType',$type->id) }}" class="btn btn-warning">Edit</a>
                             <a href="{{ route('deleteType',$type->id) }}"onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
 
                         </td>
@@ -44,8 +51,10 @@
                     @endforelse
                     </tbody>
                 </table>
-                <a href="{{ route('createType') }}" class="btn btn-primary ">Add New Type</a>
+                <a href="{{ route('createType') }}" class="btn btn-secondary ">Add New Type</a>
         </div>
     </div>
 </div>
 @endsection
+</body>
+</html>
