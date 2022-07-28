@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class GalleryRequest extends FormRequest
 {
@@ -24,8 +26,9 @@ class GalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required|max:255|unique:Gallery,title',
-            // 'title2'=>'max:255|unique:Gallery,title',
+            'title'=>['required','Max:255',
+            Rule::unique('Gallery')->ignore($this->id)],
+            // unique:Gallery,title,
             'tag'=>'required|max:255',
             'cover'=>'image|mimes:jpeg,png,jpg,gif,svg',
 

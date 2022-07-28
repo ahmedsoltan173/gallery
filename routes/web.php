@@ -17,15 +17,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('gallery.GalleryDashboard');
 // })->middleware('auth');
-// Route::get('home', function () {
-//     return view('gallery.GalleryAdd');
-// });
+Route::get('Regi', function () {
+    return view('auth.register');
+});
 define('PAGINATION_COUNTER',5);
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
+// Route::get('Regi', [App\Http\Controllers\ImageController::class, 'addAdmin'])->name('Regi')->middleware('auth');
 
 //image
 Route::get('dashboardImage', [App\Http\Controllers\ImageController::class, 'index'])->name('dashboardImage')->middleware('auth');
